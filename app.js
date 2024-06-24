@@ -104,4 +104,44 @@ class Adventurer extends Character {
           // robin.companion.assist();
           // robin.companion.companion.assist();
           
-          
+          //Part 5
+
+class AdventurerFactory {
+    constructor(role) {
+      this.role = role;
+      this.adventurers = [];
+    }
+  
+    generate(name) {
+      const newAdventurer = new Adventurer(name, this.role);
+      this.adventurers.push(newAdventurer);
+    }
+  
+    findByIndex(index) {
+      return this.adventurers[index];
+    }
+  
+    findByName(name) {
+      return this.adventurers.find((a) => a.name === name);
+    }
+  }
+  
+  const healers = new AdventurerFactory("Healer");
+  const robin = healers.generate("Robin");
+  
+  const peter = healers.generate("Peter");
+  
+  function duelSim(adventurer1, adventurer2) {
+    while (adventurer1.health > 50 && adventurer2.health > 50) {
+      adventurer1.duel(adventurer2);
+    }
+  
+    const winner =
+      adventurer1.health > adventurer2.health
+        ? adventurer1.name
+        : adventurer2.name;
+  
+    return `${winner} is the winner`;
+  }
+  
+  console.log(duelSim(healers.adventurers[0], healers.adventurers[1]));
