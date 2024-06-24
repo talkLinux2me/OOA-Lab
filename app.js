@@ -62,4 +62,21 @@ class Adventurer extends Character {
   
       return result;
         }  }
+        duel(adventurer) {
+            const myroll = super.roll();
+            const enemyroll = adventurer.roll();
+            if (myroll > enemyroll) {
+              adventurer.health -= 1;
+              console.log(
+                `${this.name} rolled higher than ${adventurer.name}, ${adventurer.name} loses 1 health point`
+              );
+              console.log(`${adventurer.name} health is now ${adventurer.health}`);
+            } else {
+              this.health -= 1;
+              console.log(
+                `${adventurer.name} rolled higher than ${this.name}, ${this.name} loses 1 health point`
+              );
+              console.log(`${this.name} health is now ${this.health}`);
+            }
+          }
         
