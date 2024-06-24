@@ -31,5 +31,35 @@ class Character {
       return result;
     }
   }
+  //Part 3
+class Adventurer extends Character {
+    static MAX_HEALTH = 100;
+    static ROLES = ["Fighter", "Healer", "Wizard"];
+    constructor(name, role) {
+      super(name);
+      // if (this.roleMatches(role)) {
+      //   this.role = role;
+      // } else {
+      //   this.role = this.ROLES[0];
+      // }
   
-
+      this.inventory.push("bedroll", "50 gold coins");
+    }
+  
+    scout() {
+      console.log(`${this.name} is scouting ahead...`);
+      super.roll();
+      console.log(this.ROLES);
+    }
+  
+    roleMatches(role) {
+      const result = false;
+      this.ROLES.forEach((element) => {
+        if (element === role) {
+          result = true;
+        }
+      });
+  
+      return result;
+        }  }
+        
